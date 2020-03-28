@@ -13,7 +13,7 @@ import static java.util.Collections.singletonMap;
 
 /**
  * Get current count of all entities.
- *
+ * <p>
  * Entities are labelled by
  * <ol>
  *     <li> world,
@@ -56,11 +56,7 @@ public class Entities extends WorldMetric {
     }
 
     private String getEntityName(EntityType type) {
-        try {
-            return type.getKey().getKey();
-        } catch (IllegalArgumentException e) {
-            return type.name();
-        }
+        return type.name();
     }
 
     private boolean isEntityTypeAlive(EntityType type) {

@@ -1,7 +1,7 @@
 package de.sldk.mc;
 
 import de.sldk.mc.config.PrometheusExporterConfig;
-import de.sldk.mc.metrics.Metric;
+import de.sldk.mc.metrics.FactionsStatistic;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.eclipse.jetty.server.Server;
 
@@ -15,7 +15,9 @@ public class PrometheusExporter extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        if (getServer().getPluginManager().getPlugin("Factions") != null) {
+            PrometheusExporterConfig.METRICS.add(PrometheusExporterConfig.metricConfig("faction_statistic", true, FactionsStatistic::new));
+        }
         config.loadDefaultsAndSave();
 
         config.enableConfiguredMetrics();

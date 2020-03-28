@@ -2,7 +2,17 @@ package de.sldk.mc.config;
 
 import de.sldk.mc.MetricRegistry;
 import de.sldk.mc.PrometheusExporter;
-import de.sldk.mc.metrics.*;
+import de.sldk.mc.metrics.Entities;
+import de.sldk.mc.metrics.GarbageCollectorWrapper;
+import de.sldk.mc.metrics.LoadedChunks;
+import de.sldk.mc.metrics.Memory;
+import de.sldk.mc.metrics.Metric;
+import de.sldk.mc.metrics.PlayerOnline;
+import de.sldk.mc.metrics.PlayerStatistics;
+import de.sldk.mc.metrics.PlayersOnlineTotal;
+import de.sldk.mc.metrics.PlayersTotal;
+import de.sldk.mc.metrics.ThreadsWrapper;
+import de.sldk.mc.metrics.Tps;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
@@ -34,7 +44,7 @@ public class PrometheusExporterConfig {
         this.prometheusExporter = prometheusExporter;
     }
 
-    private static MetricConfig metricConfig(String key, boolean defaultValue, Function<Plugin, Metric> metricInitializer) {
+    public static MetricConfig metricConfig(String key, boolean defaultValue, Function<Plugin, Metric> metricInitializer) {
         return new MetricConfig(key, defaultValue, metricInitializer);
     }
 

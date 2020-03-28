@@ -3,3 +3,4 @@ version: 2.1.0
 author: sldk
 main: de.sldk.mc.PrometheusExporter
 website: sldk.de
+softdepend: [Factions]
