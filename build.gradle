@@ -11,7 +11,10 @@ repositories {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
     maven {
-        url = 'http://repo.maven.apache.org/maven2'
+        url = 'https://repo.maven.apache.org/maven2'
+    }
+    maven {
+        url "https://libraries.minecraft.net"
     }
 }
 
@@ -19,6 +22,7 @@ dependencies {
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.25.v20191220'
     compile group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.25.v20191220'
     compile group: 'io.prometheus', name: 'simpleclient', version: '0.8.1'
+    compile group: 'io.prometheus', name: 'simpleclient_common', version: '0.8.1'
     compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.8.1'
 
     testCompile 'org.junit.jupiter:junit-jupiter:5.5.2'
@@ -49,6 +53,7 @@ shadowJar {
     dependencies {
         include(dependency('org.eclipse.jetty:jetty-server:9.4.25.v20191220'))
         include(dependency('org.eclipse.jetty:jetty-util:9.4.25.v20191220'))
+        include(dependency('io.prometheus:simpleclient:0.8.1'))
         include(dependency('io.prometheus:simpleclient_common:0.8.1'))
         include(dependency('io.prometheus:simpleclient_hotspot:0.8.1'))
     }
