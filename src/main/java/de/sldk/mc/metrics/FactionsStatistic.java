@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 
 public class FactionsStatistic extends Metric {
 
-    private static final Gauge PLAYERS_WITH_NAMES = Gauge.build()
+    private static final Gauge FACTIONS = Gauge.build()
             .name(prefix("factions"))
             .help("Online state of factions")
             .labelNames("tag", "being_raided")
@@ -15,13 +15,13 @@ public class FactionsStatistic extends Metric {
 
 
     public FactionsStatistic(Plugin plugin) {
-        super(plugin, PLAYERS_WITH_NAMES);
+        super(plugin, FACTIONS);
     }
 
     @Override
     protected void doCollect() {
         for (Faction faction : Factions.getInstance().getAllFactions()) {
-            PLAYERS_WITH_NAMES.labels(faction.getTag(), String.valueOf(faction.isBeingRaided())).set(faction.getFPlayersWhereOnline(true).size());
+            FACTIONS.labels(faction.getTag(), String.valueOf(faction.isBeingRaided())).set(faction.getFPlayersWhereOnline(true).size());
         }
     }
 }

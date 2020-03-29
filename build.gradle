@@ -15,6 +15,9 @@ repositories {
     maven {
         url "https://libraries.minecraft.net"
     }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -29,6 +32,7 @@ dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
     compileOnly 'com.auqkwatech:AuqkwaFactions:1.6.9.5-U0.5.7'
     compileOnly 'org.bukkit:bukkit:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'com.gitlab.ruany:LiteBansAPI:0.3.1'
 }
 
 group = 'de.sldk.mc'
