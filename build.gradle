@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '5.0.0'
 }
 
@@ -19,8 +18,8 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.25.v20191220'
-    compile group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.25.v20191220'
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.27.v20200227'
+    compile group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.27.v20200227'
     compile group: 'io.prometheus', name: 'simpleclient', version: '0.8.1'
     compile group: 'io.prometheus', name: 'simpleclient_common', version: '0.8.1'
     compile group: 'io.prometheus', name: 'simpleclient_hotspot', version: '0.8.1'
@@ -36,27 +35,13 @@ group = 'de.sldk.mc'
 version = '2.1.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-
 shadowJar {
-    dependencies {
-        include(dependency('org.eclipse.jetty:jetty-server:9.4.25.v20191220'))
-        include(dependency('org.eclipse.jetty:jetty-util:9.4.25.v20191220'))
-        include(dependency('io.prometheus:simpleclient:0.8.1'))
-        include(dependency('io.prometheus:simpleclient_common:0.8.1'))
-        include(dependency('io.prometheus:simpleclient_hotspot:0.8.1'))
-    }
+    minimize()
 }
 
 artifacts {
