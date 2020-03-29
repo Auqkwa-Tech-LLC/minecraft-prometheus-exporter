@@ -16,6 +16,7 @@ import de.sldk.mc.metrics.Tps;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -24,7 +25,7 @@ public class PrometheusExporterConfig {
 
     public static final PluginConfig<String> HOST = new PluginConfig<>("host", "localhost");
     public static final PluginConfig<Integer> PORT = new PluginConfig<>("port", 9225);
-    public static final List<MetricConfig> METRICS = Arrays.asList(
+    public static List<MetricConfig> METRICS = new ArrayList<>(Arrays.asList(
             metricConfig("entities_total", true, Entities::new),
             metricConfig("loaded_chunks_total", true, LoadedChunks::new),
             metricConfig("jvm_memory", true, Memory::new),
@@ -36,7 +37,7 @@ public class PrometheusExporterConfig {
             metricConfig("jvm_gc", true, GarbageCollectorWrapper::new),
 
             metricConfig("player_online", false, PlayerOnline::new),
-            metricConfig("player_statistic", false, PlayerStatistics::new));
+            metricConfig("player_statistic", false, PlayerStatistics::new)));
 
     private final PrometheusExporter prometheusExporter;
 
